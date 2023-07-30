@@ -1,0 +1,60 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+		    <!-- Styles -->
+		<link rel="stylesheet" type="text/css" href="/assets/styles/style.css"/>
+		<link rel="stylesheet" type="text/css" href="/assets/demo/style-demo.css"/>
+	</head>
+	<body>
+<!-- Top -->
+<nav class="navbar navbar-compact">
+    <div class="mr-auto">
+        <a class="logo-link magnetic" href="index.html">
+            <img class="logotype" src="assets/images/logotype.svg" alt="ARCDECO">
+        </a>
+    </div>
+    <div class="ml-sm-auto">
+        <button class="hamburger zoom-cursor magnetic" type="button">
+            <span class="hamburger__inner"></span>
+        </button>
+    </div>
+</nav>
+<!-- /Top -->
+
+<slot/>
+            
+<!-- Overlay nav -->
+<div class="nav-overlay">
+<div class="nav-overlay__bg"></div>
+<div class="nav-overlay__container">
+    <ul class="nav-overlay__menu">
+        <li class="nav-overlay__menu-item"><span>01</span><a data-text="Inicio." href="portfolio_grid.html">Inicio.</a></li>
+        <li class="nav-overlay__menu-item"><span>02</span><a data-text="Nosotros." href="blog.html">Nosotros.</a></li>
+        <li class="nav-overlay__menu-item"><span>03</span><a data-text="Blog." href="about.html">Blog.</a></li>
+        <li class="nav-overlay__menu-item"><span>04</span><a data-text="Servicios." href="about.html">Servicios.</a></li>
+        <li class="nav-overlay__menu-item"><span>05</span><a data-text="Terrakan Inversión." href="about.html">Terrakan Inversión.</a></li>
+        <li class="nav-overlay__menu-item"><span>06</span><a data-text="Terrakan Residencial." href="about.html">Terrakan Residencial.</a></li>
+        <li class="nav-overlay__menu-item"><span>07</span><a data-text="Contacto." href="contact.html">Contacto.</a></li>
+    </ul>			
+</div>	
+</div>
+<!-- /Overlay nav -->
+
+<div class="overlay-slideNav"></div>
+<!-- Demo Menu -->	
+
+<!-- Cursor -->
+<div class="node" id="node"></div>
+<div class="cursor" id="cursor"></div>	
+<script src="/assets/js/jquery-3.4.1.min.js" is:inline></script>
+<script src="/assets/js/plugins.js" is:inline></script>
+<script src="/assets/js/common.js" is:inline></script>
+<script src="/assets/demo/plugins-demo.js" is:inline></script>
+
+
+</body>
+</html>
