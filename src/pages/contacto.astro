@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+
+    <!-- Contact -->
+    <main class="js-scroll">
+	    <div class="container-fully vh-100 m-0">
+		    <div class="row align-items-md-center">
+			    <div class="col-12 col-lg-7 col-xl-6">
+		            <form id="contact-form" class="contact-form" data-toggle="validator">
+                        <div class="row">
+				            <div class="form-group col-12 col-md-12">
+                                <input type="text" class="input form-control" id="nameContact" name="nameContact" placeholder="Nombre" required="required" autocomplete="on">
+								<div class="help-block with-errors"></div>
+				            </div>
+				            <div class="form-group col-12 col-md-12">
+                                <input type="email" class="input form-control" id="emailContact" name="emailContact" placeholder="Correo" required="required" autocomplete="on">
+								<div class="help-block with-errors"></div>
+				            </div>
+				            <div class="form-group col-12 col-md-12">
+                                <textarea class="textarea form-control" id="messageContact" name="messageContact" placeholder="Comentarios"  rows="3" required="required"></textarea>
+								<div class="help-block with-errors"></div>
+				            </div>
+				            <div class="col-12 text-right">
+					            <button type="submit" class="btn">Enviar Mensaje</button>
+				            </div>
+			            </div>
+						<div id="validator-contact" class="hidden">&nbsp;</div>
+		            </form>					
+		        </div>
+				
+				<div class="col-12 col-lg-5 col-xl-6">
+				    <div class="map" id="map"></div>
+				</div>
+		    </div>
+		</div>
+    </main>
+	<!-- /Contact -->
+</Layout>

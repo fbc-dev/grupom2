@@ -4,7 +4,7 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Grupo M2</title>
 		    <!-- Styles -->
 		<link rel="stylesheet" type="text/css" href="/assets/styles/style.css"/>
 		<link rel="stylesheet" type="text/css" href="/assets/demo/style-demo.css"/>
@@ -13,8 +13,8 @@
 <!-- Top -->
 <nav class="navbar navbar-compact">
     <div class="mr-auto">
-        <a class="logo-link magnetic" href="index.html">
-            <img class="logotype" src="assets/images/logotype.svg" alt="ARCDECO">
+        <a class="logo-link magnetic" href="/">
+            Grupo M2
         </a>
     </div>
     <div class="ml-sm-auto">
@@ -26,19 +26,39 @@
 <!-- /Top -->
 
 <slot/>
+<!-- Footer -->
+<footer class="footer js-scroll-show">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ul class="footer__contacts list-unstyled">
+                    <li>Teléfono: +52 999 508 3931</li>
+                    <li>Email: contacto@grupom2.com</li>
+                    <li>Dirección: Calle 19 # 122 x 24 y 26 Col. México. Mérida, Yucatán, 97125</li>
+                </ul>
+                <div class="social footer__social">
+                    <a class="social__link" href="https://www.instagram.com/"><i class="icon-instagram"></i></a>
+                    <a class="social__link" href="https://www.behance.com/"><i class="icon-behance"></i></a>
+                    <a class="social__link" href="https://www.linkedin.com/"><i class="icon-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- /Footer -->	
             
 <!-- Overlay nav -->
 <div class="nav-overlay">
 <div class="nav-overlay__bg"></div>
 <div class="nav-overlay__container">
     <ul class="nav-overlay__menu">
-        <li class="nav-overlay__menu-item"><span>01</span><a data-text="Inicio." href="portfolio_grid.html">Inicio.</a></li>
-        <li class="nav-overlay__menu-item"><span>02</span><a data-text="Nosotros." href="blog.html">Nosotros.</a></li>
-        <li class="nav-overlay__menu-item"><span>03</span><a data-text="Blog." href="about.html">Blog.</a></li>
-        <li class="nav-overlay__menu-item"><span>04</span><a data-text="Servicios." href="about.html">Servicios.</a></li>
-        <li class="nav-overlay__menu-item"><span>05</span><a data-text="Terrakan Inversión." href="about.html">Terrakan Inversión.</a></li>
-        <li class="nav-overlay__menu-item"><span>06</span><a data-text="Terrakan Residencial." href="about.html">Terrakan Residencial.</a></li>
-        <li class="nav-overlay__menu-item"><span>07</span><a data-text="Contacto." href="contact.html">Contacto.</a></li>
+        <li class="nav-overlay__menu-item"><span>01</span><a data-text="Inicio." href="/index">Inicio.</a></li>
+        <li class="nav-overlay__menu-item"><span>02</span><a data-text="Nosotros." href="/nosotros">Nosotros.</a></li>
+        <li class="nav-overlay__menu-item"><span>03</span><a data-text="Blog." href="/blog">Blog.</a></li>
+        <li class="nav-overlay__menu-item"><span>04</span><a data-text="Servicios." href="/servicios">Servicios.</a></li>
+        <li class="nav-overlay__menu-item"><span>05</span><a data-text="Terrakan Inversión." href="https://terrakan.mx/inversion/">Terrakan Inversión.</a></li>
+        <li class="nav-overlay__menu-item"><span>06</span><a data-text="Terrakan Residencial." href="https://terrakan.mx/residencial/">Terrakan Residencial.</a></li>
+        <li class="nav-overlay__menu-item"><span>07</span><a data-text="Contacto." href="/contacto">Contacto.</a></li>
     </ul>			
 </div>	
 </div>
