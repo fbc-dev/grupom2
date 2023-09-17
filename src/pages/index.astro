@@ -1,18 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { contentfulClient } from "../lib/contentful";
+const entries = await contentfulClient.getEntries({
+    content_type: "propiedades",
+    limit: 1000,
+});
+
+
 ---
 <Layout>	
 	<main class="js-scroll">
 		<!-- Intro -->
 		<header class="hero hero-intro overlay--45">
 			<div class="hero__header">
-				<h1 class="title title--display-1 js-lines">Grupo<br>M2.</h1>
+				<h1 class="title title--display-1 js-lines">Grupo<br>Castillo.</h1>
 			</div>
 			
 			<div class="note">
 				<div class="note__item js-scroll-show">  
 					<h4 class="title title--display-1"></h4>
-					<p class="description">Bienvenido a Grupo M2, tu puerta al futuro inmobiliario en Yucatán. Descubre oportunidades únicas en Terrenos de Inversión, Terrenos Residenciales y más. Convierte tus sueños en realidad con nosotros.</p>
+					<p class="description">Bienvenido a Grupo Castillo, tu puerta al futuro inmobiliario en Yucatán. Descubre oportunidades únicas en Casas, Terrenos y más. Te ayudamos a crecer tu patrimonio.</p>
 				</div>
 			</div>
 			
@@ -34,8 +41,8 @@ import Layout from '../layouts/Layout.astro';
 				<div class="col-12">
 					<h2 class="title title--h2 js-lines">Sobre Nosotros.</h2>
 					<div class="description description-column js-scroll-show">
-						<p>En Grupo M2, nos enorgullecemos de ser una desarrolladora inmobiliaria líder en Yucatán. Nuestra pasión por la excelencia y el compromiso con la satisfacción del cliente nos han impulsado a lo largo de los años. Con una trayectoria sólida y un enfoque centrado en las necesidades de nuestros clientes, nos hemos ganado la confianza de quienes buscan oportunidades de inversión y desarrollo en el floreciente mercado inmobiliario de la región.</p>
-						<p>Nuestro equipo está formado por expertos en el campo inmobiliario, quienes combinan su profundo conocimiento del mercado local con una visión innovadora para identificar y ofrecer propiedades de alta calidad. Ya sea que estés buscando un terreno de inversión estratégico o el lugar perfecto para construir tu hogar, estamos comprometidos a brindarte soluciones que se adapten a tus metas y estilo de vida. En Grupo M2, nuestro objetivo es ser tu aliado confiable en el camino hacia un futuro próspero y exitoso.</p>
+						<p>Somos una empresa inmobiliaria dedicada a la venta y renta de casas y terrenos, así como a la elaboración de contratos de compra-venta y asesoría jurídica.</p>
+						<p>Nuestro equipo está formado por expertos en el campo inmobiliario, quienes combinan su profundo conocimiento del mercado local con una visión innovadora para identificar y ofrecer propiedades de alta calidad. Ya sea que estés buscando un terreno de inversión estratégico o el lugar perfecto para construir tu hogar, estamos comprometidos a brindarte soluciones que se adapten a tus metas y estilo de vida. En Grupo Castillo, nuestro objetivo es ser tu aliado confiable en el camino hacia un futuro próspero y exitoso.</p>
 					</div>
 				</div>
 			</div>
@@ -63,9 +70,9 @@ import Layout from '../layouts/Layout.astro';
 			<span class="text-rotate">Nuestros Proyectos</span>
 			<div class="row">
 				<div class="col-12 col-lg-8 col-xl-6">
-					<h2 class="title title--h1 js-lines">Últimos Proyectos.</h2>
+					<h2 class="title title--h1 js-lines">Últimas Propiedades.</h2>
 					<div class="description js-scroll-show">
-						<p>¡Descubre nuestros últimos proyectos inmobiliarios en Yucatán! Invierte en tu futuro con Grupo M2.</p>
+						<p>¡Descubre nuestras últimos propiedades inmobiliarias en Yucatán! Invierte en tu futuro con Grupo Castillo.</p>
 					</div>
 				</div>
 			</div>
@@ -74,29 +81,18 @@ import Layout from '../layouts/Layout.astro';
 		<!-- Slider -->
 		<div class="project-slider project-slider-control-horizon swiper-container cursorDrag">
 			<div class="swiper-wrapper">
-				<!-- Item 1 -->
+				{entries.items.map((item) => (
 				<figure class="project-slider__item swiper-slide">
 					<div class="reveal-box">
-						<h2>Terrakan Residencial</h2>
-						<a href="https://terrakan.mx/residencial/">
-							<img class="cover lazyload" src="https://terrakan.mx/residencial/assets/img/backgrounds/familia-terrakan.jpg" alt="" />
+						<h2>{item.fields.titulo}</h2>
+						<a href={`/propiedades/${item.fields.handle}`}>
+							<img class="cover lazyload" src={item.fields.fotos[0].fields.file.url} alt="" />
 						</a>
 						<span class="reveal-overlay"></span>
 					</div>
 				</figure>
-				<!-- /Item 1 -->
 
-				<!-- Item 2 -->
-				<figure class="project-slider__item swiper-slide">
-					<div class="reveal-box">
-						<h2>Terrakan Inversión</h2>
-						<a href="https://terrakan.mx/inversion/">
-							<img class="cover lazyload" src="https://terrakan.mx/assets/img/terrakan-inversion.jpg" alt="" />
-						</a>	
-						<span class="reveal-overlay"></span>
-					</div>
-				</figure>
-				<!-- /Item 2 -->
+				))}
 			</div>
 			
 			<!-- Control -->
@@ -104,60 +100,6 @@ import Layout from '../layouts/Layout.astro';
 				<div class="slider-pagination-progressbar slider-pagination-progressbar-horizon"></div>
 			</div>
 		</div>
-
-
-		
-		<!-- Clients -->
-<!-- 		<div class="container-fully section-about">
-			<div class="brand-grid">
-				<div class="brand-grid__item js-scroll-show"><img src="assets/img/brand-01.svg" alt="" /></div>
-				<div class="brand-grid__item js-scroll-show"><img src="assets/img/brand-02.svg" alt="" /></div>
-				<div class="brand-grid__item js-scroll-show"><img src="assets/img/brand-03.svg" alt="" /></div>
-				<div class="brand-grid__item js-scroll-show"><img src="assets/img/brand-04.svg" alt="" /></div>
-				<div class="brand-grid__item js-scroll-show"><img src="assets/img/brand-05.svg" alt="" /></div>
-				<div class="brand-grid__item js-scroll-show"><img src="assets/img/brand-06.svg" alt="" /></div>
-				<div class="brand-grid__item js-scroll-show"><img src="assets/img/brand-07.svg" alt="" /></div>
-				<div class="brand-grid__item js-scroll-show"><img src="assets/img/brand-08.svg" alt="" /></div>
-			</div>
-		</div> -->
-<!-- 
-				<div class="container section-about">
-					<span class="text-rotate">Testimonios</span>
-					<div class="row">
-						<div class="col-12 col-lg-8 col-xl-6">
-							<h2 class="title title--h1 js-lines">Testimonios.</h2>
-							<div class="description js-scroll-show">
-								<p>Nuestros clientes hablan por nosotros.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-		
-				<div class="services js-scroll-show">
-					<div class="services__item overlay--45">
-						<div class="services__item-bg js-image" data-image="assets/img/reviews1.jpg"></div>
-						<div class="services__item-details">
-							<h4 class="title title--h3 js-lines">Cliente 1</h4>
-							<p class="description js-scroll-show">"¡Increíble experiencia con M2! Desde el primer contacto, me impresionó la profesionalidad y el compromiso del equipo.</p>
-						</div>
-					</div>
-					<div class="services__item overlay--45">
-						<div class="services__item-bg js-image" data-image="assets/img/reviews2.jpg"></div>
-						<div class="services__item-details">
-							<h4 class="title title--h3 js-lines">Cliente 2</h4>
-							<p class="description js-scroll-show">"Excelente servicio y atención. Recomiendo totalmente a Grupo M2. ¡Gracias por ayudarme a encontrar mi nuevo hogar!"</p>
-						</div>
-					</div>
-					<div class="services__item overlay--45">
-						<div class="services__item-bg js-image" data-image="assets/img/reviews3.jpg"></div>
-						<div class="services__item-details">
-							<h4 class="title title--h3 js-lines">Cliente 3</h4>
-							<p class="description js-scroll-show">
-								"Profesionales destacados, mi experiencia con M2 fue excepcional.</p>
-						</div>
-					</div>
-				</div>
-		 -->
 	</main>
 </Layout>
 

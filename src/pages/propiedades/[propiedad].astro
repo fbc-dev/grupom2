@@ -1,0 +1,175 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { contentfulClient } from "../../lib/contentful";
+
+
+export async function getStaticPaths() {
+  const entries = await contentfulClient.getEntries({
+    content_type: "propiedades",
+    limit: 1000,
+  });
+
+  //console.log(entries.items);
+
+  const propiedades = entries.items.map((item) => {
+    console.log(item);
+    return {
+      params: {
+        propiedad: item.fields.handle,
+      },
+      props: {
+        data: item.fields,
+      },
+    };
+  });
+
+  return propiedades;
+}
+
+const { propiedad } = Astro.params;
+
+const { data } = Astro.props;
+
+console.log(data.fotos[0].fields.file.url);
+---
+
+<Layout>
+  <main class="project-single js-scroll">
+    <header class="hero overlay--45">
+      <div class="hero__header align-items-center">
+        <h1 class="title title--display-1 text-center js-words">
+          {data.titulo}
+        </h1>
+      </div>
+
+      <!-- Social -->
+      <div class="social social-floating">
+        <a class="social__link" href="https://www.facebook.com/GrupoCastilloMerida"><i class="icon-facebook"></i></a>
+      </div>
+
+      <img
+        class="hero__image cover js-scale js-parallax"
+        src={data.fotos[0].fields.file.url}
+        alt=""
+        style="transform: scale(1); opacity: 1;"
+      />
+    </header>
+
+    <div class="container">
+      <!-- Description -->
+      <div class="row justify-content-center content-caption">
+        <div class="col-12 col-lg-4">
+          <h2 class="title title--h5 js-lines">
+            <div>
+              <div
+                class="line"
+                style="display: block; text-align: left; width: 100%; transform: translateY(100%); opacity: 0;"
+              >
+                01. Descripción
+              </div>
+            </div>
+          </h2>
+        </div>
+        <div
+          class="col-12 col-lg-8 js-scroll-show"
+          style="transform: translateY(60px); opacity: 0;"
+        >
+          <p class="description">{data.descripcion}.</p>
+        </div>
+      </div>
+
+      <!-- Gallery -->
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <div class="gallery gallery-two">
+            <div class="gallery__item reveal-box" style="opacity: 0;">
+              <img
+                class="cover zoom-cursor medium-zoom-image ls-is-cached lazyloaded"
+                src={data.fotos[1].fields.file.url}
+                data-zoomable=""
+                alt=""
+              />
+              <span
+                class="reveal-overlay"
+                style="transform-origin: 0% 100%; transform: translateX(0%) skewX(30deg) scaleX(2);"
+              ></span>
+            </div>
+            <div class="gallery__item reveal-box" style="opacity: 0;">
+              <img
+                class="cover zoom-cursor medium-zoom-image ls-is-cached lazyloaded"
+                src={data.fotos[2].fields.file.url}
+                data-zoomable=""
+                alt=""
+              />
+              <span
+                class="reveal-overlay"
+                style="transform-origin: 0% 100%; transform: translateX(0%) skewX(30deg) scaleX(2);"
+              ></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="row justify-content-center content-caption">
+        <div class="col-12 col-lg-4">
+          <h2 class="title title--h5 js-lines">
+            <div>
+              <div
+                class="line"
+                style="display: block; text-align: left; width: 100%; transform: translateY(100%); opacity: 0;"
+              >
+                02. Datos Generales
+              </div>
+            </div>
+          </h2>
+        </div>
+        <div
+          class="col-12 col-lg-8 js-scroll-show"
+          style="transform: translateY(60px); opacity: 0;"
+        >
+          <p class="description">
+            <strong>Precio:</strong>
+            {data.precio}<br />
+            <strong>Medidas:</strong>
+            {data.medidas}<br />
+            <strong>Superficie:</strong>
+            {data.superficie}<br />
+            <strong>Uso:</strong>
+            {data.uso}<br />
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slider -->
+    <div
+      class="project-slider swiper-container cursorDrag swiper-container-initialized swiper-container-horizontal"
+      style="cursor: grab;"
+    >
+      <div
+        class="swiper-wrapper"
+        style="transition-duration: 0ms; transform: translate3d(-6233px, 0px, 0px);"
+      >
+        {
+          data.fotos.map((foto) => (
+            <figure
+              class="project-slider__item swiper-slide swiper-slide-active"
+              data-swiper-slide-index="0"
+            >
+              <div class="reveal-box" style="opacity: 0;">
+                <img class="cover lazyload" src={foto.fields.file.url} alt="" />
+                <span
+                  class="reveal-overlay"
+                  style="transform-origin: 0% 100%; transform: translateX(0%) skewX(30deg) scaleX(2);"
+                />
+              </div>
+            </figure>
+          ))
+        }
+      </div>
+      <span class="swiper-notification" aria-live="assertive" aria-atomic="true"
+      ></span>
+    </div>
+  </main>
+</Layout>

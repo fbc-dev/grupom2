@@ -10,6 +10,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^2.9.3"
+    "@contentful/rich-text-html-renderer": "^16.1.2",
+    "astro": "^2.9.3",
+    "contentful": "^10.5.2"
   }
 }
