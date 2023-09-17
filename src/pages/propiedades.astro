@@ -1,0 +1,64 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { contentfulClient } from "../lib/contentful";
+const entries = await contentfulClient.getEntries({
+  content_type: "propiedades",
+  limit: 1000,
+});
+---
+
+<Layout>
+  <main class="js-scroll">
+    <div class="container-fully">
+      <header class="header-page">
+        <!-- Filter -->
+        <h1 class="title title--h1 js-lines">
+          <div>
+            <div
+              class="line"
+              style="display: block; text-align: left; width: 100%; transform: translateY(0%); opacity: 1;"
+            >
+              Propiedades
+            </div>
+          </div>
+        </h1><div class="select js-down-done"></div>
+      </header>
+
+      <div
+        class="content-grid project-masonry filter-container"
+        style="position: relative; height: 2682.69px;"
+      >
+        <div class="gutter-sizer"></div>
+        {
+          entries.items.map((item) => (
+            <figure
+              class="content-grid__item onHover category-modern"
+              style="position: absolute; left: 0%; top: 0px;"
+            >
+              <a
+                class="content-grid__link js-scroll-show"
+                href={`/propiedades/${item.fields.handle}`}
+                style="transform: translateY(0px); opacity: 1;"
+              >
+                <picture class="content-grid__image-wrap image-wrap-fit js-zooming">
+                  <img
+                    class="cover content-grid__image ls-is-cached lazyloaded"
+                    src={item.fields.fotos[0].fields.file.url}
+                    alt="Project"
+                  />
+                </picture>
+                <div class="content-grid__caption">
+                  <h2 class="title title--h5">{item.fields.titulo}</h2>
+                  <p class="content-grid__description">
+                    There are two things that make a room timeless: a sense of
+                    history and a piece of the future.
+                  </p>
+                </div>
+              </a>
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </main>
+</Layout>
