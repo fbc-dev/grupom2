@@ -31,13 +31,14 @@ const { propiedad } = Astro.params;
 const { data } = Astro.props;
 
 console.log(data.fotos[0].fields.file.url);
+console.log(data)
 ---
 
 <Layout>
   <main class="project-single js-scroll">
     <header class="hero overlay--45">
       <div class="hero__header align-items-center">
-        <h1 class="title title--display-1 text-center js-words">
+        <h1 class="title title--display-1 text-center">
           {data.titulo}
         </h1>
       </div>
@@ -45,6 +46,8 @@ console.log(data.fotos[0].fields.file.url);
       <!-- Social -->
       <div class="social social-floating">
         <a class="social__link" href="https://www.facebook.com/GrupoCastilloMerida"><i class="icon-facebook"></i></a>
+        <a class="social__link" href="https://www.instagram.com/grupocastillomerida?igsh=emE0eTMyeGI3bTVt"><i class="icon-instagram"></i></a>
+
       </div>
 
       <img
@@ -65,7 +68,7 @@ console.log(data.fotos[0].fields.file.url);
                 class="line"
                 style="display: block; text-align: left; width: 100%; transform: translateY(100%); opacity: 0;"
               >
-                01. Descripción
+               Descripción
               </div>
             </div>
           </h2>
@@ -74,8 +77,9 @@ console.log(data.fotos[0].fields.file.url);
           class="col-12 col-lg-8 js-scroll-show"
           style="transform: translateY(60px); opacity: 0;"
         >
-          <p class="description">{data.descripcion}.</p>
-        </div>
+        <pre class="description rte">
+          {data.descripcion}
+        </pre>        
       </div>
 
       <!-- Gallery -->
@@ -119,7 +123,7 @@ console.log(data.fotos[0].fields.file.url);
                 class="line"
                 style="display: block; text-align: left; width: 100%; transform: translateY(100%); opacity: 0;"
               >
-                02. Datos Generales
+                Datos Generales
               </div>
             </div>
           </h2>
